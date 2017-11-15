@@ -35,10 +35,8 @@ if($_POST) {
 	);
 		
 		
-		//$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-		//mail($emailTo, $subject . " (lancar)", $message, $headers);
 		
-		$smtp = Mail::factory('smtp', array(
+	$smtp = Mail::factory('smtp', array(
         'host' => 'smtp.zoho.com',
         'port' => '465',
         'auth' => true,
@@ -50,7 +48,7 @@ $mail = $smtp->send($to, $headers, $message);
 	    
     }
 
-    echo json_encode($array);
+    
 
 }
 
