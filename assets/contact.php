@@ -30,7 +30,7 @@ if($_POST) {
 		$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
 		mail($emailTo, $subject . " (lancar)", $message, $headers);
     }
-    echo $clientEmail;
+    
 
     echo json_encode($array);
 
