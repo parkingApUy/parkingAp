@@ -1,4 +1,5 @@
 <?php
+echo "HOLA";
 require_once "Mail.php";
 
 $from = "Web Master <webmaster@example.com>";
