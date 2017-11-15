@@ -27,8 +27,27 @@ if($_POST) {
     }
     if(isEmail($clientEmail) && $subject != '' && $message != '') {
         // Send email
-		$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-		mail($emailTo, $subject . " (lancar)", $message, $headers);
+		
+	$headers = array(
+    'From' => $clientEmail,
+    'To' => $emailTo,
+    'Subject' => $subject
+	);
+		
+		
+		//$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
+		//mail($emailTo, $subject . " (lancar)", $message, $headers);
+		
+		$smtp = Mail::factory('smtp', array(
+        'host' => 'smtp.zoho.com',
+        'port' => '465',
+        'auth' => true,
+        'username' => 'info@parkingap.com.uy',
+        'password' => 'fabrizio1717'
+    ));
+
+$mail = $smtp->send($to, $headers, $message);
+	    
     }
 
     echo json_encode($array);
