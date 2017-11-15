@@ -46,14 +46,7 @@ $mail->AddAddress("email@gmail.com");
  } else {
     echo "Message has been sent";
  }
-     
-     
-        // Send email
-		$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-		mail($emailTo, $subject . " (lancar)", $message, $headers);
-    }
-
-    echo json_encode($array);
+  
 
 }
 
