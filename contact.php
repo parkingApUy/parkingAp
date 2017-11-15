@@ -1,4 +1,5 @@
 <?php
+if($_POST) {
 echo "HOLA";
 require_once "Mail.php";
 $from = "Web Master <webmaster@example.com>";
@@ -23,5 +24,6 @@ if (PEAR::isError($mail)) {
   echo("<p>" . $mail->getMessage() . "</p>");
 } else {
   echo("<p>Message successfully sent!</p>");
+}
 }
 ?>
