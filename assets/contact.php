@@ -26,20 +26,14 @@ if($_POST) {
         $array['messageMessage'] = 'Empty message!';
     }
     if(isEmail($clientEmail) && $subject != '' && $message != '') {
-     $mail = new PHPMailer(); // create a new object
-echo clientEmail;
-  
+        // Send email
+		$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
+		mail($emailTo, $subject . " (lancar)", $message, $headers);
+    }
+    echo $clientEmail;
+
+    echo json_encode($array);
 
 }
 
-
-
-
-
 ?>
-
-
-
-
-
-
