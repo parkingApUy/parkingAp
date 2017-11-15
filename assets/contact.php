@@ -1,59 +1,26 @@
+
+
 <?php
-
-require_once "Mail.php";
-
-
-
-    // Enter the email where you want to receive the message
-    $emailTo = 'info@parkingap.com.uy';
-
-    $clientEmail = addslashes(trim($_POST['email']));
-    $subject = addslashes(trim($_POST['subject']));
-    $message = addslashes(trim($_POST['message']));
-
-    $array = array('emailMessage' => '', 'subjectMessage' => '', 'messageMessage' => '');
-	
-	
-
-    if(!isEmail($clientEmail)) {
-        $array['emailMessage'] = 'Invalid email!';
+    require("PHPMailer-master/class.phpmailer.php");
+    require("PHPMailer-master/class.smtp.php");
+    $mail = new PHPMailer();
+    $mail->IsSMTP();  // telling the class to use SMTP
+    $mail->Host     = "smtp.zoho.com"; // SMTP server
+    $mail->From     = "info@parkingap.com.uy";
+    $mail->AddAddress("parkingapuy@gmail.com");
+    $mail->Subject  = "First PHPMailer Message";
+    $mail->Body     = "Hi! \n\n This is my first e-mail sent through PHPMailer.";
+    $mail->WordWrap = 50;
+    if(!$mail->Send()) {
+        echo 'Message was not sent.';
+        echo 'Mailer error: ' . $mail->ErrorInfo;
+    }else {
+        echo 'Message has been sent.';
     }
-    if($subject == '') {
-        $array['subjectMessage'] = 'Empty subject!';
-    }
-    if($message == '') {
-        $array['messageMessage'] = 'Empty message!';
-    }
-    if(isEmail($clientEmail) && $subject != '' && $message != '') {
-        // Send email
-	
-
-	$headers = array(
-    'From' => $clientEmail,
-    'To' => $emailTo,
-    'Subject' => $subject
-	);
-		
-		
-		//$headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-		//mail($emailTo, $subject . " (lancar)", $message, $headers);
-		
-		$smtp = Mail::factory('smtp', array(
-        'host' => 'smtp.zoho.com',
-        'port' => '465',
-        'auth' => true,
-        'username' => 'info@parkingap.com.uy',
-        'password' => 'fabrizio1717'
-    ));
-
-$mail = $smtp->send($to, $headers, $message);
-
-
-
-    echo json_encode($array);
-
-
-
-}
-
 ?>
+
+
+
+
+
+
