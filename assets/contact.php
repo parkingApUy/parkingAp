@@ -28,7 +28,7 @@ if($_POST) {
     if(isEmail($clientEmail) && $subject != '' && $message != '') {
         // Send email
 		$from = new SendGrid\Email(null, $clientEmail);
-$subject = "LTD+";
+$subject = "ParkingAP";
 $to = new SendGrid\Email(null, "info@parkingap.com.uy");
 $content = new SendGrid\Content("text/plain", $message);
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
